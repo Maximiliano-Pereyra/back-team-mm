@@ -1,20 +1,16 @@
-const mongoose = require('mongoose')
 
-let connection = async() => {
-    try {
-       mongoose.connect(
+const mongoose = require("mongoose");
 
-        process.env.LINK_DB,
-        
-        {
-            useUnifiedTopology: true,
-            useNewUrlParser: true
-        }
-        )
-       console.log('conectado');
-    } catch (error) {
-        console.log(error.message)
-    }
-}
+let connection = () => {
+  try {
+    mongoose.connect(process.env.LINK_DB, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
+    console.log("Connected");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+connection();
 
-connection()
