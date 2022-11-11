@@ -7,40 +7,40 @@ let hotels = [
      ],
      "capacity": 600,
      "description": "It is one of the most luxurious hotels in Cairo",
-     "cityId": "636d5163d57e659e4d20dad5",
-     "userId": "636d4e81a0851f9efdf8eff4"
+     "cityId": "636d8d149b27960b67b8d7ef",
+     "userId": "636d8bcade38ce0e1619410e"
      },
       {
      "name": "Athens Cypria Hotel",
      "photo": ["https://pix10.agoda.net/hotelImages/506/50697/50697_16082319240045742113.jpg?ca=6&ce=1&s=1024x768"],
      "capacity": 300,
      "description": "Just 300 meters from Syntagma Metro Station, Athens Cypria Hotel features a stylish café-bar, internet corner and a rooftop bar with views of the Acropolis",
-     "cityId": "636d5163d57e659e4d20dad6",
-     "userId": "636d4e81a0851f9efdf8eff5"
+     "cityId": "636d8d149b27960b67b8d7f0",
+     "userId": "636d8bcade38ce0e1619410e"
      },
      {
      "name": "Novotel Paris Les Halles",
      "photo": ["https://www.novotelparis.com/photos-2/ourhotel-1.jpg"],
      "capacity": 500,
      "description": "Known for its family-friendly environment and proximity to great restaurants and attractions, Novotel Paris Les Halles makes it easy to enjoy the best of Paris",
-     "cityId": "636d5163d57e659e4d20dad7",
-     "userId": "636d4e81a0851f9efdf8eff2"
+     "cityId": "636d8d149b27960b67b8d7f1",
+     "userId": "636d8bcade38ce0e1619410e"
      },
      {
      "name": "Westin Rusutsu Resort",
      "photo": ["https://rusutsu.com/wp-content/uploads/westin-main_sp.jpg"],
      "capacity": 400,
      "description": "Located 400 meters from Rusutsu Ski Resort, The Westin Rusutsu Resort offers rooms with air conditioning in Rusutsu. The property is within walking distance of several attractions, including the West Gondola and the West 2nd Quad",
-     "cityId": "636d5163d57e659e4d20dad8",
-     "userId": "636d4e81a0851f9efdf8eff3"
+     "cityId": "636d8d149b27960b67b8d7f2",
+     "userId": "636d8bcade38ce0e1619410f"
      },
      {
      "name": "InterContinental Wellington",
      "photo": ["https://digital.ihg.com/is/image/ihg/intercontinental-wellington-6002915753-2x1"],
      "capacity": 600,
      "description": "The 5-star InterContinental Wellington is located next to the harbor and just 5 miles from Wellington International Airport",
-     "cityId": "636d5163d57e659e4d20dad4",
-     "userId": "636d4e81a0851f9efdf8eff4"
+     "cityId": "636d8d149b27960b67b8d7f3",
+     "userId": "636d8bcade38ce0e1619410f"
      },
      {
      "name": "Las Hayas Ushuaia Resort",
@@ -50,8 +50,8 @@ let hotels = [
      ],
      "capacity": 300,
      "description": "Las Hayas Ushuaia Resort offers comfortable accommodation with a spa, indoor pool and hot tub. The property has a restaurant, terrace and free Wi-Fi in public areas. Ushuaia Port is 3 km away",
-     "cityId": "636d5163d57e659e4d20dad3",
-     "userId": "636d4e81a0851f9efdf8eff5"
+     "cityId": "636d8d149b27960b67b8d7f4",
+     "userId": "636d8bcade38ce0e1619410f"
      },
      {
      "name": "Sofitel Legend The Grand Amsterdam",
@@ -61,16 +61,16 @@ let hotels = [
      ],
      "capacity": 500,
      "description": "Located in the heart of Amsterdam, this 5-star hotel offers luxurious rooms in an exclusive historic setting with French elegance",
-     "cityId": "636d5163d57e659e4d20dadb",
-     "userId": "636d4e81a0851f9efdf8eff2"
+     "cityId": "636d8d149b27960b67b8d7f5",
+     "userId": "636d8bcade38ce0e1619410c"
      },
      {
      "name": "Grand Hotel Bohemia",
      "photo": ["https://ak-d.tripcdn.com/images/220o16000001087iz4F6E_Z_1100_824_R5_Q70_D.jpg"],
      "capacity": "400",
      "description": "Grand Hotel Bohemia is located in the center of Prague, a few steps from the Powder Tower and 200 meters from the Namesti Republiky Metro Station and the Palladium Shopping Mall, overlooking the red roofs of the Old Town",
-     "cityId": "636d5163d57e659e4d20dadc",
-     "userId": "636d4e81a0851f9efdf8eff3"
+     "cityId": "636d8d149b27960b67b8d7f6",
+     "userId": "636d8bcade38ce0e1619410c"
      },
      {
      "name": "Artesana Luxury Villa",
@@ -80,16 +80,16 @@ let hotels = [
      ],
      "capacity": 550,
      "description": "This property has a 24-hour reception and offers a bicycle rental service. La Artesana Luxury Villa is attached to a 5-star hotel and guests have access to its swimming pool, hot tub, gym and spa center",
-     "cityId": "636d5163d57e659e4d20dade",
-     "userId": "636d4e81a0851f9efdf8eff4"
+     "cityId": "636d8d149b27960b67b8d7f7",
+     "userId": "636d8bcade38ce0e1619410c"
      },
      {
      "name": "Avani Atrium Bangkok Hotel",
      "photo": ["https://pix10.agoda.net/hotelImages/23112526/0/628a73f3d71a49a8114039c9bffb40c5.jpg?ca=17&ce=1&s=1024x768"],
      "capacity": 700,
      "description": "Avani Atrium Bangkok is located along New Petchburi Road, 700 metres from Phetchaburi MRT Station and hotel also provides drop off service to Phetchaburi MRT at exit 3 as well. Boasting a swimming pool, fitness centre and free WiFi in all areas, this hotel offers chargeable limousine services",
-     "cityId": "636d5163d57e659e4d20dadd",
-     "userId": "636d4e81a0851f9efdf8eff5"
+     "cityId": "636d8d149b27960b67b8d7f8",
+     "userId": "636d8bcade38ce0e1619410d"
      },
      {
      "name": "La Concha Best View",
@@ -99,8 +99,8 @@ let hotels = [
      ],
      "capacity": 400,
      "description": "Set in San Sebastián, just 50 meters from La Concha Beach, La Concha Best View offers beachfront accommodation with a terrace and free WiFi. This apartment is 1.2 km from Victoria Eugenia Theater and 1.7 km from Calle Mayor",
-     "cityId": "636d5163d57e659e4d20dada",
-     "userId": "636d4e81a0851f9efdf8eff2"
+     "cityId": "636d8d149b27960b67b8d7f9",
+     "userId": "636d8bcade38ce0e1619410d"
      },
      {
      "name": "Ouarzazate Hotel",
@@ -110,13 +110,13 @@ let hotels = [
      ],
      "capacity": 300,
      "description": "Hotel Ouarzazate is situated 1.2 km from Khandak Semmar Park, 1.3 km from Mohammed V Square and 2.1 km from Kasbah. It offers family rooms, a terrace, 24-hour reception, shuttle service, luggage storage and free Wi-Fi in all areas",
-     "cityId": "636d5163d57e659e4d20dad9",
-     "userId": "636d4e81a0851f9efdf8eff3"
+     "cityId": "636d8d149b27960b67b8d7fa",
+     "userId": "636d8bcade38ce0e1619410d"
      }    
 ]
 
 require('dotenv').config()
-require('../../config/database/database')
+require('../../config/database/database.js')
 const Hotel=require('../Hotel')
 
 hotels.forEach(elemento=> {
