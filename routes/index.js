@@ -14,5 +14,9 @@ let hotel= require('./hotel')
 
 router.use('/api/hotel',hotel)
 
+let show = require('./show')
+
+router.use('/api/show', show)
+
 
 module.exports = router;
