@@ -40,6 +40,29 @@ const controller = {
                 message: error.message
             })
         }
+    },
+    destroy: async(req, res) => {
+        let {id} = req.params
+        try {
+            let showD = await Show.findOneAndDelete({_id:id})
+            if (showD) {
+                res.status(200).json({
+                  id: showD._id,
+                  success: true,
+                  message: "se elimino el Show de manera exitosa"
+              })  
+              } else{
+                  res.status(404).json({
+                      success: false,
+                      message: "no se encontro el Show"
+                  })
+              }
+        } catch (error) {
+            res.status(404).json({
+                success: false,
+                message: error.message
+            })
+        }
     }
     
 }
