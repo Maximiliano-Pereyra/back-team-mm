@@ -46,7 +46,6 @@ let users= [
 		"code": "bastade.codigos",
 		"verified": "true",
 		"logged": "true"
-
 	},
 	{
         "name": "Robert",

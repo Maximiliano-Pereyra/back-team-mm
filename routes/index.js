@@ -3,10 +3,16 @@ let router = require('express').Router()
 
 //requiero las rutas de cada modelo a controlar
 let user = require('./user')//ubicacion rutas user
-let hotel= require('./hotel')
+
+let city = require('./city')
 
 //obligo al enrutador principal que use la palabra user para controlar las rutas de user
 router.use('/user',user)
+router.use('/city',city)
+
+let hotel= require('./hotel')
+
 router.use('/api/hotel',hotel)
+
 
 module.exports = router;
