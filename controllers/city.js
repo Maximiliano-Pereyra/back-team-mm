@@ -1,3 +1,4 @@
+const { query } = require("express");
 const City = require("../models/City");
 
 const controller = {
@@ -18,8 +19,28 @@ const controller = {
   },
 
   read: async (req, res) => {
+    let {query} = req;
+    console.log(req.query);
     try {
-    } catch {}
+      let allcities = await City.find(query);
+      if (allcities) {
+        res.status(200).json({
+          response: allcities,
+          success: true,
+          message: "Cities have been found",
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: "There are no cities",
+        });
+      }
+    } catch {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
   },
 
   update: async (req, res) => {
