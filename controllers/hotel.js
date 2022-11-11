@@ -26,7 +26,7 @@ const controller = {
                 message: "se encontraron hoteles de manera exitosa"
             })
         } catch (error) {
-            res.status(400).json({
+            res.status(404).json({
                 success: false,
                 message: error.message
             })
@@ -50,7 +50,30 @@ const controller = {
             }
             
         } catch (error) {
-            res.status(400).json({
+            res.status(404).json({
+                success: false,
+                message: error.message
+            })
+        }
+    },
+    destroy: async(req, res) => {
+        let {id} = req.params
+        try {
+            let hotelD = await Hotel.findOneAndDelete({_id:id})
+            if (hotelD) {
+                res.status(200).json({
+                  id: hotelD._id,
+                  success: true,
+                  message: "se elimino el hotel de manera exitosa"
+              })  
+              } else{
+                  res.status(404).json({
+                      success: false,
+                      message: "no se encontro el hotel"
+                  })
+              }
+        } catch (error) {
+            res.status(404).json({
                 success: false,
                 message: error.message
             })
