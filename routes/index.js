@@ -1,11 +1,10 @@
-var express = require('express');
-var router = express.Router();
+//requiero el metodo de enrutamiento del modulo de express
+let router = require('express').Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+//requiero las rutas de cada modelo a controlar
+let user = require('./user')//ubicacion rutas user
 
-res.render('index', { title: 'BaseDatos' });
-
-});
+//obligo al enrutador principal que use la palabra user para controlar las rutas de user
+router.use('/user',user)
 
 module.exports = router;
