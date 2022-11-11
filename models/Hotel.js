@@ -5,7 +5,7 @@ const schema = new mongoose.Schema({
     photo: [{type: String ,required: true}],
     capacity: {type: Number ,required: true},
     cityId: {type: mongoose.Types.ObjectId, ref: 'cities', required: true},
-    userId: {type: mongoose.Types.ObjectId, ref:'admins', required: true}
+    userId: {type: mongoose.Types.ObjectId, ref:'users', required: true}
 })
 
 const Hotel = mongoose.model('hotels',schema)
