@@ -46,6 +46,7 @@ let users= [
 		"code": "bastade.codigos",
 		"verified": "true",
 		"logged": "true"
+
 	},
 	{
         "name": "Robert",
@@ -95,6 +96,9 @@ let users= [
         "verified": true,
         "logged": true
     }
+
+	}
+
 ]
 
 require('dotenv').config()
