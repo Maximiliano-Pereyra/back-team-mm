@@ -96,9 +96,6 @@ let users= [
         "verified": true,
         "logged": true
     }
-
-	}
-
 ]
 
 require('dotenv').config()
