@@ -1,4 +1,4 @@
-let admins= [
+let users= [
 	{
 		"name": "Lucas",
 		"lastName": "Rodriguez",
@@ -51,10 +51,10 @@ let admins= [
 
 require('dotenv').config()
 require('../../config/database/database')
-const Admin=require('../User')
+const User=require('../User')
 
-admins.forEach(elemento=> {
-    Admin.create({
+users.forEach(elemento=> {
+    User.create({
         name: elemento.name,
         lastName: elemento.lastName,
         role: elemento.role,
