@@ -109,8 +109,28 @@ const controller = {
   },
 
   destroy: async (req, res) => {
+    let { id } = req.params;
     try {
-    } catch {}
+      let onecity = await City.findByIdAndDelete({ _id: id });
+      if (onecity) {
+        res.status(200).json({
+          id: onecity._id,
+          message: "The city has been deleted",
+          success: true,
+        });
+      } else {
+        res.status(404).json({
+          message: "The city has not been found",
+          success: false,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        message: error.message,
+        success: false,
+      });
+    }
   },
 };
 
