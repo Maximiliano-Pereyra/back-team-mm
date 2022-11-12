@@ -20,39 +20,36 @@ const controller = {
 
   read: async (req, res) => {
     let query = {};
-    if (req.query.name) {
-      query = { name: req.query.name };
-    }
     if (req.query.continent) {
       query = {
         ...query,
         continent: req.query.continent,
       };
     }
-    if (req.query.population) {
+    if (req.query.name) {
       query = {
         ...query,
-        population: req.query.population,
+        name: { $regex: req.query.name, $options: "i" },
       };
     }
     try {
-      let all_cities = await City.find(query).populate("userId", "name");
-      if (all_cities.length !== 0) {
+      let allcities = await City.find(query);
+      if (allcities) {
         res.status(200).json({
-          response: all_cities,
           success: true,
-          message: "Cities were found successfully",
+          message: "Cities were successfully found",
+          response: allcities,
         });
       } else {
         res.status(404).json({
           success: false,
-          message: "Cities not found",
+          message: "No city was found",
         });
       }
     } catch (error) {
       res.status(400).json({
         success: false,
-        message: "No city found",
+        message: error.message,
       });
     }
   },
