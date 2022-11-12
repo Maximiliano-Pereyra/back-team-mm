@@ -82,8 +82,30 @@ const controller = {
   },
 
   update: async (req, res) => {
+    let { id } = req.params; //saco propiedad id del objeto params
     try {
-    } catch (error) {}
+      let onecity = await City.findByIdAndUpdate({ _id: id }, req.body, {
+        new: true,
+      });
+      if (onecity) {
+        res.status(200).json({
+          id: onecity._id,
+          message: "The city has been modified",
+          success: true,
+        });
+      } else {
+        res.status(404).json({
+          message: "The city has not been found",
+          success: false,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        message: error.message,
+        success: false,
+      });
+    }
   },
 
   destroy: async (req, res) => {
