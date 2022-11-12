@@ -19,33 +19,71 @@ const controller = {
   },
 
   read: async (req, res) => {
-    let {query} = req;
-    console.log(req.query);
+    let query = {};
+    if (req.query.continent) {
+      query = {
+        ...query,
+        continent: req.query.continent,
+      };
+    }
+    if (req.query.name) {
+      query = {
+        ...query,
+        name: { $regex: req.query.name, $options: "i" },
+      };
+    }
     try {
       let allcities = await City.find(query);
       if (allcities) {
         res.status(200).json({
-          response: allcities,
           success: true,
-          message: "Cities have been found",
+          message: "Cities were successfully found",
+          response: allcities,
         });
       } else {
         res.status(404).json({
           success: false,
-          message: "There are no cities",
+          message: "No city was found",
         });
       }
-    } catch {
+    } catch (error) {
       res.status(400).json({
         success: false,
         message: error.message,
       });
     }
   },
+  readOne: async (req, res) => {
+    let id = req.params.id;
+    try {
+      let findcity = await City.findOne({ _id: id }).populate({
+        path: "userId",
+        select: "name photo -_id",
+      });
+      if (findcity) {
+        res.status(200).json({
+          message: "City found",
+          response: findcity,
+          success: true,
+        });
+      } else {
+        res.status(404).json({
+          message: "Could not find the city",
+          success: false,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        message: error.message,
+        success: false,
+      });
+    }
+  },
 
   update: async (req, res) => {
     try {
-    } catch {}
+    } catch (error) {}
   },
 
   destroy: async (req, res) => {
