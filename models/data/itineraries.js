@@ -26,7 +26,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410e",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7da",
+    cityId: "63728c7df09d256246af5090",
     name: "Athens",
     photo: [
       "https://cdn.getyourguide.com/img/location/276c1f4578c2ee5e.jpeg/99.jpg",
@@ -39,7 +39,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410f",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7da",
+    cityId: "63728c7df09d256246af5090",
     name: "Athens",
     photo: [
       "https://cdn2.civitatis.com/grecia/atenas/galeria/paisaje-egina.jpg",
@@ -52,7 +52,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410f",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7db",
+    cityId: "63728e53f09d256246af5092",
     name: "Paris",
     photo: [
       "https://cdn-imgix.headout.com/blog-banner/image/a62daa4ad526d5a0ed2200c46b3af043-il-vagabiondo-FlkxnZdebMk-unsplash%20(1).jpg?auto=compress&fm=pjpg&q=10",
@@ -66,7 +66,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410c",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7db",
+    cityId: "63728e53f09d256246af5092",
     name: "Paris",
     photo: [
       "https://media.traveler.es/photos/61375ed232d932c80fcb8076/4:3/w_1396,h_1047,c_limit/212470.jpg",
