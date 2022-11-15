@@ -1,6 +1,6 @@
 let itineraries = [
   {
-    cityId: "636e5f227aecf78aa64dd7d9",
+    cityId: "637304deeff8e7b47b3c9982",
     name: "Cairo",
     photo: [
       "https://www.egypttoursportal.com/images/2020/07/Outdoor-Activities-to-Do-from-Cairo-Egypt-Tours-Portal.jpg",
@@ -13,7 +13,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410e",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7d9",
+    cityId: "637304deeff8e7b47b3c9982",
     name: "Cairo",
     photo: [
       "https://media.staticontent.com/media/pictures/2533eccd-3e50-4214-bc3c-5a5c185587e7/950x696",
@@ -26,7 +26,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410e",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7da",
+    cityId: "637304deeff8e7b47b3c9983",
     name: "Athens",
     photo: [
       "https://cdn.getyourguide.com/img/location/276c1f4578c2ee5e.jpeg/99.jpg",
@@ -39,7 +39,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410f",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7da",
+    cityId: "637304deeff8e7b47b3c9983",
     name: "Athens",
     photo: [
       "https://cdn2.civitatis.com/grecia/atenas/galeria/paisaje-egina.jpg",
@@ -52,7 +52,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410f",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7db",
+    cityId: "637304deeff8e7b47b3c9984",
     name: "Paris",
     photo: [
       "https://cdn-imgix.headout.com/blog-banner/image/a62daa4ad526d5a0ed2200c46b3af043-il-vagabiondo-FlkxnZdebMk-unsplash%20(1).jpg?auto=compress&fm=pjpg&q=10",
@@ -66,7 +66,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410c",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7db",
+    cityId: "637304deeff8e7b47b3c9984",
     name: "Paris",
     photo: [
       "https://media.traveler.es/photos/61375ed232d932c80fcb8076/4:3/w_1396,h_1047,c_limit/212470.jpg",
@@ -79,7 +79,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410c",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7de",
+    cityId: "637304deeff8e7b47b3c9987",
     name: "Ushuaia",
     photo: [
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/78/ea.jpg",
@@ -93,7 +93,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410f",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7de",
+    cityId: "637304deeff8e7b47b3c9987",
     name: "Ushuaia",
     photo: [
       "https://i0.wp.com/patagoniaandina.com/wp-content/uploads/2020/05/vinciguerra.jpg?resize=640%2C480&ssl=1",
@@ -106,7 +106,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410f",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7e0",
+    cityId: "637304deeff8e7b47b3c9989",
     name: "Praga",
     photo: [
       "https://tourscanner.com/blog/wp-content/uploads/2021/05/fun-things-to-do-in-Prague.jpg",
@@ -119,7 +119,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410d",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7e0",
+    cityId: "637304deeff8e7b47b3c9989",
     name: "Praga",
     photo: [
       "https://static.neweuropetours.eu/wp-content/uploads/2018/09/thio-prg-terezin-23-1600x900.jpg",
@@ -132,7 +132,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410d",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7e1",
+    cityId: "637304deeff8e7b47b3c998a",
     name: "San Miguel de Allende",
     photo: [
       "https://mediaim.expedia.com/localexpert/3474693/f9f5a4c5-8ec7-4d18-9003-2eb4f462e479.jpg?impolicy=resizecrop&rw=1005&rh=565",
@@ -146,7 +146,7 @@ let itineraries = [
     userId: "636d8bcade38ce0e1619410e",
   },
   {
-    cityId: "636e5f227aecf78aa64dd7e1",
+    cityId: "637304deeff8e7b47b3c998a",
     name: "San Miguel de Allende",
     photo: [
       "https://www.yaconic.com/wp-content/uploads/2021/09/desfile-dia-muertos-cdmx-1024x538.jpg",

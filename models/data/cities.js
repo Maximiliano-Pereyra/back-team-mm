@@ -86,7 +86,7 @@ let cities = [
 ]
 
 require('dotenv').config()
-require('../../config/database/database')
+require('../../config/database/database.js')
 const City = require('../City')
 
 cities.forEach(element=> {
