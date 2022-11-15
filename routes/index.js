@@ -5,10 +5,12 @@ let router = require('express').Router()
 let user = require('./user')//ubicacion rutas user
 
 let city = require('./city')
+let itinerary = require('./itinerary')
 
 //obligo al enrutador principal que use la palabra user para controlar las rutas de user
-router.use('/user',user)
-router.use('/city',city)
+router.use('/api/user',user)
+router.use('/api/city',city)
+router.use('/api/itinerary',itinerary)
 
 let hotel= require('./hotel')
 
