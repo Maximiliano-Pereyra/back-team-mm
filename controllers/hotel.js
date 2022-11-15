@@ -1,3 +1,4 @@
+const { query } = require('express')
 const Hotel = require('../models/Hotel')
 
 const controller = {
@@ -18,8 +19,19 @@ const controller = {
         }
     },
     read: async(req, res)=>{
+        let query = {}
+        let order = {}
+
+        if (req.query._id){
+            query = {name: req.query._id}
+        }
+        if (req.query.order){
+            order = {capacity: req.query.capacity}
+        }
+        
+
         try {
-            let todosH = await Hotel.find()
+            let todosH = await Hotel.find(query).sort(order)
             res.status(200).json({
                 res: todosH,
                 success: true,

@@ -1,3 +1,4 @@
+const { query } = require('express')
 const Show = require('../models/Show')
 
 const controller = {
@@ -34,6 +35,27 @@ const controller = {
                 })
             }
             
+        } catch (error) {
+            res.status(404).json({
+                success: false,
+                message: error.message
+            })
+        }
+    },
+    read: async(req, res)=>{
+        let query = {}
+
+        if (req.query.hotelId){
+            query = {hotelId: req.query.hotelId}
+        }
+
+        try {
+            let todosS = await Show.find(query)
+            res.status(200).json({
+                res: todosS,
+                success: true,
+                message: "se encontraron showes de manera exitosa"
+            })
         } catch (error) {
             res.status(404).json({
                 success: false,
