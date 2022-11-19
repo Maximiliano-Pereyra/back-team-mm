@@ -1,5 +1,3 @@
-const { name } = require("ejs");
-const { query } = require("express");
 const City = require("../models/City");
 
 const controller = {
@@ -7,7 +5,6 @@ const controller = {
     try {
       let new_city = await City.create(req.body);
       res.status(201).json({
-        name: new_city.name,
         id: new_city._id,
         success: true,
         message: "The city has been created successfully",
@@ -22,6 +19,9 @@ const controller = {
 
   read: async (req, res) => {
     let query = {};
+    if (req.query.userId) {
+      query = { userId: req.query.userId };
+    }
     if (req.query.continent) {
       query = {
         ...query,

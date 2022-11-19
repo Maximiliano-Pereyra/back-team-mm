@@ -1,52 +1,53 @@
-//const { Assertion } = require('chai')
-//let chai = require('chai')
-const { assert } = require("chai");
-const request = require("supertest");
 const app = require("../app");
-//let server = require('../controllers/city')
+const chai = require("chai");
+const assert = chai.assert;
+const request = require("supertest");
 
-describe("POST/city", function () {
-  it("Must response with name", function (done) {
+
+describe("GET /api/city", function () {
+  it("Should return an array", function (done) {
     request(app)
-      .post("/api/city")
-      .send({
-        name: "test",
-        continent: "America",
-        photo: "[http://localhost:8000/image]",
-        population: "200000",
-        userId: "636d8bcade38ce0e1619410e",
+      .get("/api/city")
+      .expect((response) => {
+        assert.isArray(response.body.response);
+        response.body.response.forEach((element) => {
+          assert.isObject(element);
+        });
       })
-      .then((res) => {
-        assert.isString(res.body.name);
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
         done();
       });
   });
-  it("Must response with 400 status code", function (done) {
+});
+describe("POST /api/city", function () {
+  it("Should be a string", function (done) {
     request(app)
       .post("/api/city")
-      .send({})
-      .expect(400)
+      .expect((response) => {
+        assert.isString(response.name);
+      })
       .end(function (err, res) {
-        if (err) return done(err);
-        return done();
+        if (err) {
+          return done(err);
+        }
+        done();
       });
   });
+  it("status 400"),
+    function (done) {
+      request(app)
+        .post("/api/city")
+        .expect((response) => {
+          assert.isString(response.name);
+        })
+        .end(function (err, res) {
+          if (err) {
+            return done(err);
+          }
+          done();
+        });
+    };
 });
-
-/* chai.should();
-describe('POST/api/city', () =>{
-  it("It should Post a new city"),(done) =>{
-    const city = {
-      name: "Buenos Aires"
-    }
-    chai.request(server)
-    .post("/api/city/")
-    .send(city)
-    .end((err,res)=>{
-      res.body.should.have.property('name');
-      res.body.should.be.a('object')
-      err.should.have.status(400)
-      done();
-    }) 
-  }
-}) */
