@@ -3,7 +3,6 @@ const chai = require("chai");
 const assert = chai.assert;
 const request = require("supertest");
 
-
 describe("GET /api/city", function () {
   it("Should return an array", function (done) {
     request(app)
@@ -23,11 +22,11 @@ describe("GET /api/city", function () {
   });
 });
 describe("POST /api/city", function () {
-  it("Should be a string", function (done) {
+  it("Should be an string", function (done) {
     request(app)
-      .post("/api/city")
+      .post("/api/cities")
       .expect((response) => {
-        assert.isString(response.name);
+        assert.typeOf(response.name, "string");
       })
       .end(function (err, res) {
         if (err) {
@@ -36,12 +35,12 @@ describe("POST /api/city", function () {
         done();
       });
   });
-  it("status 400"),
+  it("Status 400"),
     function (done) {
       request(app)
         .post("/api/city")
         .expect((response) => {
-          assert.isString(response.name);
+          assert.typeOf(response.name, "string");
         })
         .end(function (err, res) {
           if (err) {

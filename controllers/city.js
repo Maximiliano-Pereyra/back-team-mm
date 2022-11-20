@@ -35,7 +35,10 @@ const controller = {
       };
     }
     try {
-      let allcities = await City.find(query);
+      let allcities = await City.find(query).populate({
+        path: "userId",
+        select: "role -_id",
+      });
       if (allcities) {
         res.status(200).json({
           success: true,
