@@ -22,6 +22,7 @@ const controller = {
         let query = {}
         let order = {}
 
+
         if(req.query.name){
             query = {
                 ...query,
@@ -34,11 +35,21 @@ const controller = {
                 ...query,
                 capacity: req.query.order
             }
+=======
+        if (req.query._id){
+            query = {name: req.query._id}
+        }
+        if (req.query.order){
+            order = {capacity: req.query.capacity}
+
         }
         
 
         try {
+
             let todosH = await Hotel.find(query).sort(order).populate([{ path:"userId", select: "name photo"}])
+=======
+
             res.status(200).json({
                 res: todosH,
                 success: true,

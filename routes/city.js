@@ -1,8 +1,11 @@
 let router = require("express").Router();
 
+const schema = require("../schemas/city");
+const validatorCity = require("../middlewares/validatorCity");
+
 let { create, read, readOne, update, destroy } = require("../controllers/city");
 
-router.post("/", create);
+router.post("/", validatorCity(schema),create);
 router.get("/", read);
 router.get("/:id", readOne);
 router.put("/update/:id", update);

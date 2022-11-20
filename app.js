@@ -7,7 +7,14 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+
+=======
+
+
+require("./config/database/database.js");
+
 const cors = require("cors");
+
 
 var indexRouter = require("./routes/index");
 
