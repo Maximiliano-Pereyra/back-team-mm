@@ -7,7 +7,7 @@ const controller = {
         try {
             let newHotel= await Hotel.create(req.body)
             res.status(201).json({
-                id: newHotel._id,
+                capacity: newHotel.capacity,
                 success: true,
                 message: "se creo el hotel de manera exitosa"
             })   
@@ -22,16 +22,23 @@ const controller = {
         let query = {}
         let order = {}
 
-        if (req.query._id){
-            query = {name: req.query._id}
+        if(req.query.name){
+            query = {
+                ...query,
+                name:{$regex: req.query.name, $options:"i"}
+            }
         }
-        if (req.query.order){
-            order = {capacity: req.query.capacity}
+
+        if(req.query.order){
+            order = {
+                ...query,
+                capacity: req.query.order
+            }
         }
         
 
         try {
-            let todosH = await Hotel.find(query).sort(order)
+            let todosH = await Hotel.find(query).sort(order).populate([{ path:"userId", select: "name photo"}])
             res.status(200).json({
                 res: todosH,
                 success: true,
