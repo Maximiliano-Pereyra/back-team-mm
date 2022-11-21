@@ -8,10 +8,20 @@ const schema = joi.object({
         "string.empty":"el campo esta vacio",
         "string.max":"el maximo de caracteres es de 30"
     }),
-    photo: joi.string().required()/* .uri() */,
-    capacity:joi.number().required().min(300), 
-    cityId: joi.string().required(),
-    userId: joi.string().required(),
+    photo: joi.string().required().uri().messages({
+        "any.required":"el campo es obligatorio",
+        "string.empty":"el campo esta vacio",
+    }),
+    capacity:joi.number().required().min(300).messages({
+        "any.required":"el campo es obligatorio",
+        "string.empty":"el campo esta vacio",
+    }), 
+    cityId: joi.string().required().messages({
+        "any.required":"el campo es obligatorio",
+    }),
+    userId: joi.string().required().messages({
+        "any.required":"el campo es obligatorio",
+    }),
 })
 
 module.exports = schema

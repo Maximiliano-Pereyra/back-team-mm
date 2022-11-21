@@ -1,4 +1,3 @@
-const { query } = require("express");
 const City = require("../models/City");
 
 const controller = {
@@ -20,6 +19,9 @@ const controller = {
 
   read: async (req, res) => {
     let query = {};
+    if (req.query.userId) {
+      query = { userId: req.query.userId };
+    }
     if (req.query.continent) {
       query = {
         ...query,
