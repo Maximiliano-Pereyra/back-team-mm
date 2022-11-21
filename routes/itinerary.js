@@ -4,7 +4,7 @@ let { create, read, update, destroy } = require("../controllers/itinerary");
 
 router.post("/", create);
 router.get("/", read);
-router.put("/update/:id", update);
+router.put("/:id", update);
 router.delete("/destroy/:id", destroy);
 
 module.exports = router;
