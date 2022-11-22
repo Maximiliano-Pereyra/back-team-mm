@@ -24,6 +24,11 @@ const controller = {
         cityId: req.query.cityId,
       };
     }
+    if (req.query.userId) {
+      query = {
+        userId: req.query.userId,
+      };
+    }
     try {
       let theitinerary = await Itinerary.find(query);
       if (theitinerary) {
@@ -87,6 +92,32 @@ const controller = {
           res: theitinerary,
           success: false,
           message: "Itinerary not found",
+        });
+      }
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  },
+  readOne: async (req, res) => {
+    let id = req.params.id;
+    try {
+      let itinerary = await Itinerary.findOne({ _id: id }).populate({
+        path: "userId",
+        select: "name photo -_id",
+      });
+      if (itinerary) {
+        res.status(200).json({
+          success: true,
+          message: "Itinerary found",
+          response: itinerary,
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: "No itinerary found",
         });
       }
     } catch (error) {

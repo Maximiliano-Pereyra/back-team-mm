@@ -8,7 +8,7 @@ const controller = {
         id: new_city._id,
         success: true,
         message: "The city has been created successfully",
-        new_city
+        body: new_city
       });
     } catch (error) {
       res.status(400).json({
