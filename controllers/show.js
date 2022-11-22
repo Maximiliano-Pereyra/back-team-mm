@@ -45,9 +45,10 @@ const controller = {
     read: async(req, res)=>{
         let query = {}
 
-        if (req.query.hotelId){
-            query = {hotelId: req.query.hotelId}
-        }
+        if (req.query.userId) {
+            query = { userId: req.query.userId };
+          }
+
 
         try {
             let todosS = await Show.find(query)

@@ -21,6 +21,10 @@ const controller = {
     read: async(req, res)=>{
         let query = {}
         let order = {}
+          
+        if (req.query.userId) {
+            query = { userId: req.query.userId };
+          }
 
         if(req.query.name){
             query = {
@@ -51,6 +55,33 @@ const controller = {
             })
         }
     },
+    readOne: async (req, res) => {
+        let id = req.params.id;
+        try {
+          let findhotel = await Hotel.findOne({ _id: id }).populate({
+            path: "userId",
+            select: "name photo -_id",
+          });
+          if (findhotel) {
+            res.status(200).json({
+              message: "Hotel found",
+              response: findhotel,
+              success: true,
+            });
+          } else {
+            res.status(404).json({
+              message: "Could not find the hotel",
+              success: false,
+            });
+          }
+        } catch (error) {
+          console.log(error);
+          res.status(400).json({
+            message: error.message,
+            success: false,
+          });
+        }
+      },
     update: async (req, res) => {
         let {id} = req.params
         try {
