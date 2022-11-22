@@ -8,6 +8,7 @@ const controller = {
         id: new_city._id,
         success: true,
         message: "The city has been created successfully",
+        body: new_city
       });
     } catch (error) {
       res.status(400).json({
@@ -35,7 +36,10 @@ const controller = {
       };
     }
     try {
-      let allcities = await City.find(query);
+      let allcities = await City.find(query).populate({
+        path: "userId",
+        select: "role -_id",
+      });
       if (allcities) {
         res.status(200).json({
           success: true,

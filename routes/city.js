@@ -8,7 +8,7 @@ let { create, read, readOne, update, destroy } = require("../controllers/city");
 router.post("/", validatorCity(schema),create);
 router.get("/", read);
 router.get("/:id", readOne);
-router.put("/update/:id", update);
+router.put("/:id", update);
 router.delete("/destroy/:id", destroy);
 
 module.exports = router;
