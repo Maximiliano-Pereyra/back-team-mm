@@ -1,4 +1,3 @@
-
 const app = require('../app')
 const chai = require('chai');
 const assert = chai.assert;
@@ -21,7 +20,7 @@ describe('POST /api/hotel', function(){
         .then(response =>{
             assert.isNumber(response.body.capacity)
             done()
-        })
+        })//then posible respuesta, y el done da el fin
     })
 
     it('Deberia  crea ser un status code 201', function(done){
@@ -93,7 +92,6 @@ describe('POST a new city', function(){
         population: 123,
         userId: "cualquierID",
     }
-
         request(app)
             .post('/api/city')
             .send(cityTest)
