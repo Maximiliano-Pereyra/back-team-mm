@@ -2,25 +2,20 @@ const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
 const crypto = require("crypto");
 const accountVerificationEmail = require("./accountVerificationEmail");
-const { userSignedUpResponse } = require("../config/responses");
+const {
+  userSignedUpResponse,
+  userNotFoundResponse,
+  invalidCredentialsResponse,
+  userSignedOutResponse,
+} = require("../config/responses");
 
 const controller = {
   register: async (req, res, next) => {
     //metodo para que el usuario se registre
-    let {
-      name,
-      lastName,
-      photo,
-      age,
-      email,
-      password,
-      verified,
-      logged,
-      code,
-    } = req.body;
-    verified = false;
-    logged = false;
-    code = crypto.randomBytes(10).toString("hex"); //10 es la longitud
+    let { name, lastName, photo, age, email, password, role } = req.body;
+    let verified = false;
+    let logged = false;
+    let code = crypto.randomBytes(10).toString("hex"); //10 es la longitud
     password = bcryptjs.hashSync(password, 10); //10 es el grado de seguridad
     try {
       await User.create({
@@ -29,26 +24,38 @@ const controller = {
         photo,
         age,
         email,
+        role,
         password,
         verified,
         logged,
         code,
       });
-      await accountVerificationEmail(email, code);
-      return userSignedUpResponse;
+      await accountVerificationEmail(email, code, name);
+      return userSignedUpResponse(req, res);
     } catch (error) {
       next(error);
     }
   },
 
   verified: async (req, res, next) => {
+    const { code } = req.params;
+    console.log(code)
     try {
+      let user = await User.findByIdAndUpdate(
+        { code: code },
+        { verified: true },
+        { new: true }
+      );
+      if (user) {
+        return res.redirect("https://www.google.com/");
+      }
+      return userNotFoundResponse(req, res);
     } catch (error) {
       next(error);
     }
   },
 
-  enter: async (req, res, next) => {},
+  //enter: async (req, res, next) => {},
 
   /*   create: async (req, res) => {
     try {

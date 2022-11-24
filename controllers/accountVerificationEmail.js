@@ -21,7 +21,7 @@ function getTransport(client) {
     service: "gmail",
     auth: {
       user: GOOGLE_USER,
-      type: OAuth2,
+      type: "OAuth2",
       clientId: GOOGLE_ID,
       clientSecret: GOOGLE_SECRET,
       refreshToken: GOOGLE_REFRESH,
@@ -44,15 +44,23 @@ function getEmailBody({ email, host, code }) {
 }
 
 //funcion que junta todos los pasos necesarios para exportar
-const accountVerificationEmail = async (email, code) => {
+const accountVerificationEmail = async (
+  newUserMail,
+  codeWithCrypto,
+  userName
+) => {
   const client = createClient();
   client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH });
   const transport = getTransport(client);
   const mailOptions = {
     from: GOOGLE_USER,
-    to: email,
-    subject: "Verify your new account in Amazing Events",
-    html: getEmailBody({ email, code, BACK_URL }),
+    to: newUserMail,
+    subject: "Verify your new account in My Tinerary",
+    html: getEmailBody({
+      name: userName,
+      code: codeWithCrypto,
+      host: BACK_URL,
+    }),
   };
   await transport.sendMail(mailOptions, (error, response) => {
     if (error) {
