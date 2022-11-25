@@ -8,8 +8,8 @@ let users= [
 		"email": "lu_rodriguez@gmail.com",
 		"password": "lalala029",
 		"code": "noseme.ocurrenada",
-		"verified": "true",
-		"logged": "true"
+		"verified": true,
+		"logged": true
 	},
 	{
 		"name": "Sofia",
@@ -20,8 +20,8 @@ let users= [
 		"email": "sofi_led@gmail.com",
 		"password": "lololo89",
 		"code": "yamete.kudasai",
-		"verified": "true",
-		"logged": "true"
+		"verified": true,
+		"logged": true
 	},
 	{
 		"name": "Michael",
@@ -32,8 +32,8 @@ let users= [
 		"email": "mich_smi@gmail.com",
 		"password": "wololooo",
 		"code": "solose.quenosenada",
-		"verified": "true",
-		"logged": "true"
+		"verified": true,
+		"logged": true
 	},
 	{
 		"name": "Anne",
@@ -44,8 +44,8 @@ let users= [
 		"email": "anne_jho@gmail.com",
 		"password": "ñamñamñam",
 		"code": "bastade.codigos",
-		"verified": "true",
-		"logged": "true"
+		"verified": true,
+		"logged": true
 	},
 	{
         "name": "Robert",

@@ -39,7 +39,7 @@ const controller = {
 
   verified: async (req, res, next) => {
     const { code } = req.params;
-    console.log(code)
+    console.log(code);
     try {
       let user = await User.findByIdAndUpdate(
         { code: code },

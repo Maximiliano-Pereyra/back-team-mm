@@ -1,4 +1,4 @@
-const validatorUser = (schema) => [
+const validator = (schema) => [
   (req, res, next) => {
     const data = schema.validate(req.body, { abortEarly: false });
     if (data.error) {
@@ -10,4 +10,4 @@ const validatorUser = (schema) => [
     next();
   },
 ];
-module.exports = validatorUser;
+module.exports = validator;
