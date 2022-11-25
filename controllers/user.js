@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
 const crypto = require("crypto");
+const jwt = require('jsonwebtoken')
 const accountVerificationEmail = require("./accountVerificationEmail");
 const {
   userSignedUpResponse,
@@ -55,37 +56,65 @@ const controller = {
     }
   },
 
-  //enter: async (req, res, next) => {},
+  enter: async (req, res, next) => {
+    const {password} = req.body;
+    const {user} = req;
 
-  /*   create: async (req, res) => {
     try {
-      let new_user = await User.create(req.body);
-      res.status(201).json({
-        id: new_user._id,
-        success: true,
-        message: "The user has been created successfully",
-      });
+      const verificationPassword = bcryptjs.compareSync(password, user.password)
+
+      if (verificationPassword) {
+        await Usuario.findOneAndUpdate({ _id: user.id }, { logged: true })
+        const token = jwt.sign(
+          { name: user.name, photo: user.photo, logged: user.logged },
+          process.env.KEY_JWT,
+          { expiresIn: 60 * 60 * 24 }
+        )
+
+        return res.status(200).json({
+          response: { user, token },
+          success: true,
+          message: 'Welcome' + user.name
+        })
+      }
+
+      return invalidCredentialsResponse(req, res)
+
     } catch (error) {
-      res.status(400).json({
-        success: false,
-        message: error.message,
-      });
+      next(error)
     }
-  }, */
+
+  },
+
+  /*  create: async (req, res) => {
+     try {
+       let new_user = await User.create(req.body);
+       res.status(201).json({
+         id: new_user._id,
+         success: true,
+         message: "The user has been created successfully",
+       });
+     } catch (error) {
+       res.status(400).json({
+         success: false,
+         message: error.message,
+       });
+     }
+   }, */
 
   read: async (req, res) => {
     try {
-    } catch {}
+    } catch { }
   },
 
   update: async (req, res) => {
     try {
-    } catch {}
+    } catch { }
   },
 
   destroy: async (req, res) => {
     try {
-    } catch {}
+    } catch { }
   },
 };
 
