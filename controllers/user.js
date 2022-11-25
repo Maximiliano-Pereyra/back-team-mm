@@ -57,16 +57,16 @@ const controller = {
   },
 
   enter: async (req, res, next) => {
-    const {password} = req.body;
-    const {user} = req;
+    const { password } = req.body;
+    const { user } = req;
 
     try {
       const verificationPassword = bcryptjs.compareSync(password, user.password)
 
       if (verificationPassword) {
-        await Usuario.findOneAndUpdate({ _id: user.id }, { logged: true })
+        const userEnter = await User.findOneAndUpdate({ _id: user.id }, { logged: true }, { new:true })
         const token = jwt.sign(
-          { name: user.name, photo: user.photo, logged: user.logged },
+          {id:userEnter._id, name: userEnter.name, photo: userEnter.photo, logged: userEnter.logged },
           process.env.KEY_JWT,
           { expiresIn: 60 * 60 * 24 }
         )
@@ -86,21 +86,26 @@ const controller = {
 
   },
 
-  /*  create: async (req, res) => {
-     try {
-       let new_user = await User.create(req.body);
-       res.status(201).json({
-         id: new_user._id,
-         success: true,
-         message: "The user has been created successfully",
-       });
-     } catch (error) {
-       res.status(400).json({
-         success: false,
-         message: error.message,
-       });
-     }
-   }, */
+  enterWhitToken: async (req, res, next) => {
+    let { user } = req
+    try {
+      return res.json({
+        response: {
+          user: {
+            name: user.name,
+            photo: user.photo,
+            logged: user.logged,
+            role: user.role
+          },
+        },
+        success: true,
+        message: 'Welcome' + user.name
+      })
+    } catch (error) {
+      next(error)
+    }
+  },
+
 
   read: async (req, res) => {
     try {
