@@ -9,10 +9,9 @@ const passport = require('../config/passport')
 //desestructuro el controlador de user para traer los metodos que necesito enrutar
 let {
   register,
-  verified,
+  verified, 
   enter,
-  access,
-  accessWithToken,
+  enterWhitToken,
 } = require("../controllers/user");
 const schema = require("../schemas/user");
 
@@ -21,7 +20,7 @@ const schema = require("../schemas/user");
 //router.route("/create").post(create);
 router.post("/sign-up", validator(schema), accountExistsSignUp, register);
 router.get("/verified/:code", verified);
-router.post('/sign-in', accountExistsSignIn,accountHasBeenVerified , enter)
-/* , passport.aunte('jwt', {session: false})  */
+router.post('/sign-in', accountExistsSignIn,accountHasBeenVerified , enter);
+router.post('/token', passport.authenticate('jwt', { session:false }), mustSignIn, enterWhitToken );
 
 module.exports = router;

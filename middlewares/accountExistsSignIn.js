@@ -11,7 +11,8 @@ async function accountExistsSignIn(req, res, next) {
             photo: user.photo,
             email: user.email,
             password: user.password,
-            verified: user.verified
+            verified: user.verified, 
+            role: user.role
         }
         //console.log(req.user)
         return next()
