@@ -2,16 +2,16 @@ const joi = require("joi");
 
 const schema = joi.object({
   name: joi.string().required().min(2).max(40).messages({
-    "string.base": "Enter the name of the City",
+    "string.base": "Enter your name",
     "any.required": "Complete this input",
-    "string.empty": "Enter the name of the city",
+    "string.empty": "Enter your name",
     "string.min": "The minimum is 2 characters",
     "string.max": "The maximum is 40 characters",
   }),
   lastName: joi.string().required().min(2).max(40).messages({
-    "string.base": "Enter the name of the City",
+    "string.base": "Enter your lastname",
     "any.required": "Complete this input",
-    "string.empty": "Enter the name of the city",
+    "string.empty": "Enter your lastname",
     "string.min": "The minimum is 2 characters",
     "string.max": "The maximum is 40 characters",
   }),
