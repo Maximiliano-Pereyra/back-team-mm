@@ -13,6 +13,8 @@ let {
   enter,
   access,
   accessWithToken,
+  enterWithToken,
+  leave
 } = require("../controllers/user");
 const schema = require("../schemas/user");
 
@@ -22,6 +24,8 @@ const schema = require("../schemas/user");
 router.post("/sign-up", validator(schema), accountExistsSignUp, register);
 router.get("/verified/:code", verified);
 router.post('/sign-in', accountExistsSignIn,accountHasBeenVerified , enter)
+router.post('/token', passport.authenticate('jwt', { session:false }), mustSignIn, enterWithToken)
+router.post('/sign-out', passport.authenticate('jwt', { session:false }), leave)
 /* , passport.aunte('jwt', {session: false})  */
 
 module.exports = router;

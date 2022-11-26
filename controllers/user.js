@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
 const crypto = require("crypto");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 const accountVerificationEmail = require("./accountVerificationEmail");
 const {
   userSignedUpResponse,
@@ -57,35 +57,77 @@ const controller = {
   },
 
   enter: async (req, res, next) => {
-    const {password} = req.body;
-    const {user} = req;
-
+    const { password } = req.body;
+    const { user } = req;
     try {
-      const verificationPassword = bcryptjs.compareSync(password, user.password)
+      const verifiedPassword = bcryptjs.compareSync(password, user.password);
 
-      if (verificationPassword) {
-        await Usuario.findOneAndUpdate({ _id: user.id }, { logged: true })
-        const token = jwt.sign(
-          { name: user.name, photo: user.photo, logged: user.logged },
-          process.env.KEY_JWT,
-          { expiresIn: 60 * 60 * 24 }
-        )
+      if (verifiedPassword) {
+        const userDb = await User.findOneAndUpdate(
+          { _id: user.id },
+          { logged: true },
+          { new: true }
+        );
+        let userProctected = {
+          id: userDb._id,
+          name: userDb.name,
+          photo: userDb.photo,
+          logged: userDb.logged,
+        };
+        const token = jwt.sign(userProctected, process.env.KEY_JWT, {
+          expiresIn: 60 * 60 * 24,
+        });
 
         return res.status(200).json({
-          response: { user, token },
+          response: {
+            user: {
+              name: user.name,
+              lastName: user.lastName,
+              photo: user.photo,
+              role: user.role,
+              id: user.id,
+            },
+            token,
+          },
           success: true,
-          message: 'Welcome' + user.name
-        })
+          message: "Welcome " + user.name,
+        });
       }
-
-      return invalidCredentialsResponse(req, res)
-
+      return invalidCredentialsResponse(req, res);
     } catch (error) {
-      next(error)
+      next(error);
     }
-
+  },
+  enterWithToken: async (req, res, next) => {
+    let { user } = req;
+    try {
+      return res.json({
+        response: {
+          user,
+        },
+        success: true,
+        message: "Welcome " + user.name,
+      });
+    } catch (error) {
+      next(error);
+    }
   },
 
+  leave: async (req, res, next) => {
+    const { id } = req.user;
+
+    try {
+      let user = await User.findOneAndUpdate(
+        { _id: id },
+        { logged: false },
+        { new: true }
+      );
+      console.log(user);
+      return userSignedOutResponse(req, res);
+    } catch (error) {
+      next(error);
+    }
+  },
   /*  create: async (req, res) => {
      try {
        let new_user = await User.create(req.body);
@@ -104,17 +146,17 @@ const controller = {
 
   read: async (req, res) => {
     try {
-    } catch { }
+    } catch {}
   },
 
   update: async (req, res) => {
     try {
-    } catch { }
+    } catch {}
   },
 
   destroy: async (req, res) => {
     try {
-    } catch { }
+    } catch {}
   },
 };
 
