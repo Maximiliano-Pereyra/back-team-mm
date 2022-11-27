@@ -86,6 +86,7 @@ const controller = {
               photo: user.photo,
               role: user.role,
               id: user.id,
+              email: user.email
             },
             token,
           },
@@ -128,36 +129,31 @@ const controller = {
       next(error);
     }
   },
-  /*  create: async (req, res) => {
-     try {
-       let new_user = await User.create(req.body);
-       res.status(201).json({
-         id: new_user._id,
-         success: true,
-         message: "The user has been created successfully",
-       });
-     } catch (error) {
-       res.status(400).json({
-         success: false,
-         message: error.message,
-       });
-     }
-   }, */
-
-  read: async (req, res) => {
+  update: async (req, res,next) => {
+    let {id} = req.params
     try {
-    } catch {}
-  },
-
-  update: async (req, res) => {
-    try {
-    } catch {}
-  },
-
-  destroy: async (req, res) => {
-    try {
-    } catch {}
-  },
+        let userU = await User.findOneAndUpdate({_id:id}, req.body, { new: true })
+        if (userU) {
+          res.status(200).json({
+            id: User._id,
+            success: true,
+            message: "data were successfully modified"
+        })  
+        } else{
+            res.status(404).json({
+                success: false,
+                message: "don't found user"
+            })
+        }
+        
+    } catch (error) {
+        res.status(404).json({
+            success: false,
+            message: error.message
+        })
+    }
+},
 };
 
 module.exports = controller;
+
