@@ -43,10 +43,15 @@ function invalidCredentialsResponse(req,res) {
 function verifyResponse(req,res) {
   return res.status(401).json({
       success: false,
-      message: 'Please, verify your email account and try again!'
+      message: 'Verify your email account and try again!'
   })
 }
-
+function mustBeTheOwner(req, res) {
+  return res.status(401).json({
+    success: false,
+    message: "You must be the owner",
+  });
+}
 module.exports = {
   userSignedUpResponse,
   userExistsResponse,
@@ -54,5 +59,6 @@ module.exports = {
   userSignedOutResponse,
   mustSignInResponse,
   invalidCredentialsResponse,
-  verifyResponse
+  verifyResponse,
+  mustBeTheOwner
 }
