@@ -11,10 +11,9 @@ let {
   register,
   verified,
   enter,
-  access,
-  accessWithToken,
   enterWithToken,
-  leave
+  leave,
+  update
 } = require("../controllers/user");
 const schema = require("../schemas/user");
 
@@ -26,6 +25,6 @@ router.get("/verified/:code", verified);
 router.post('/sign-in', accountExistsSignIn,accountHasBeenVerified , enter)
 router.post('/token', passport.authenticate('jwt', { session:false }), mustSignIn, enterWithToken)
 router.post('/sign-out', passport.authenticate('jwt', { session:false }), leave)
-/* , passport.aunte('jwt', {session: false})  */
+router.patch('/:id', update)
 
 module.exports = router;
