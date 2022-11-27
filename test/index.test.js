@@ -55,6 +55,24 @@ describe('delete /api/hotel/:id', function () {
     })
 })
 
+describe('delete /api/city/:id', function () {
+
+    it('Deberia  borra un ciudad', function (done) {
+        request(app)
+            .delete('/api/city/')
+            .send({
+                _id:"637304deeff8e7b47b3c9984"
+            })
+            .end(function (err, res) {
+                if (err) {
+                    return done(err)
+                }
+                done()
+            })
+    })
+})
+
+
 
 
 /* describe("GET /api/city", function () {

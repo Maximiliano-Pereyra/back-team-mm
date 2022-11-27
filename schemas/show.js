@@ -12,13 +12,27 @@ const schema = joi.object({
         "any.required":"el campo es obligatorio",
         "string.empty":"el campo esta vacio",
     }),
-    capacity:joi.number().required().min(300).messages({
+    description: joi.string().required().max(45).messages({
+        "any.required":"el campo es obligatorio",
+        "string.empty":"el campo esta vacio",
+    }),
+    price:joi.number().required().min(45). max(120).messages({
         "any.required":"el campo es obligatorio",
         "string.empty":"el campo esta vacio",
     }), 
-    cityId: joi.string().required().messages({
+    date: joi.date().required().messages({
         "any.required":"el campo es obligatorio",
     }),
+    hotelId: joi.string().required().messages({
+        "any.required":"el campo es obligatorio",
+    }),
+    userId: joi.string().required().messages({
+        "any.required":"el campo es obligatorio",
+    })
 })
 
 module.exports = schema
+
+
+    
+    
