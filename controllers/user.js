@@ -31,7 +31,7 @@ const controller = {
         logged,
         code,
       });
-      await accountVerificationEmail(email, code, name);
+      await accountVerificationEmail(email, code);
       return userSignedUpResponse(req, res);
     } catch (error) {
       next(error);
@@ -152,6 +152,27 @@ const controller = {
             message: error.message
         })
     }
+},
+read: async (req, res, next) => {
+  let id = req.params.id;
+  try {
+    let user = await User.findById({ _id: id })
+    console.log(user);
+    if (user) {
+      res.status(200).json({
+        success: true,
+        message: "the user was successfully found",
+        response: user,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "there is no user",
+      });
+    }
+  } catch (error) {
+    next(error)
+  }
 },
 };
 
