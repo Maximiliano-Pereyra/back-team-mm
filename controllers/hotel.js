@@ -21,11 +21,7 @@ const controller = {
     read: async(req, res)=>{
         let query = {}
         let order = {}
-          
-        if (req.query.userId) {
-            query = { userId: req.query.userId };
-          }
-
+    
         if(req.query.name){
             query = {
                 ...query,
@@ -34,15 +30,17 @@ const controller = {
         }
 
         if(req.query.order){
-            order = {
-                ...query,
-                capacity: req.query.order
-            }
+            order = {capacity: req.query.order}
         }
-        
 
+        if(req.query.userId){
+            query = {
+            ...query,
+            userId:req.query.userId
+        }
+    }
         try {
-            let todosH = await Hotel.find(query).sort(order).populate([{ path:"userId", select: "name photo"}])
+            let todosH = await Hotel.find(query).sort(order)
             res.status(200).json({
                 res: todosH,
                 success: true,
