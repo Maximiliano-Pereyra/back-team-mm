@@ -86,7 +86,7 @@ const controller = {
               photo: user.photo,
               role: user.role,
               id: user.id,
-              email: user.email
+              email: user.email,
             },
             token,
           },
@@ -132,7 +132,7 @@ const controller = {
   update: async (req, res,next) => {
     let {id} = req.params
     try {
-        let userU = await User.findOneAndUpdate({_id:id}, req.body, { new: true })
+      let userU = await User.findOneAndUpdate({_id:id}, req.body, { new: true })
         if (userU) {
           res.status(200).json({
             id: User._id,

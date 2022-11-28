@@ -25,6 +25,6 @@ router.get("/verified/:code", verified);
 router.post('/sign-in', accountExistsSignIn,accountHasBeenVerified , enter)
 router.post('/token', passport.authenticate('jwt', { session:false }), mustSignIn, enterWithToken)
 router.post('/sign-out', passport.authenticate('jwt', { session:false }), leave)
-router.patch('/:id', update)
+router.patch('/:id',validator(schema), update)
 
 module.exports = router;

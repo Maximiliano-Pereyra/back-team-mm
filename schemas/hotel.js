@@ -19,6 +19,9 @@ const schema = joi.object({
     cityId: joi.string().required().messages({
         "any.required":"el campo es obligatorio",
     }),
+    userId: joi.string().required().messages({
+        "any.required":"el campo es obligatorio",
+    }),
 })
 
 module.exports = schema
