@@ -17,7 +17,7 @@ const schema = joi.object({
     "any.required": "The Price is required",
     "number.base": "Price must be a number",
   }),
-  duration: joi.number().min(1).required().messages({
+  duration: joi.number().min(0).required().messages({
     "any.required": "The Duration is required",
     "number.base": "Duration must be a number",
   }),
