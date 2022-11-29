@@ -32,6 +32,9 @@ function getTransport(client) {
 }
 
 function getEmailBody({ email, host, code }) {
+  console.log(code);
+  console.log(host);
+
   //lo que va a recibir el usuario en el correo de verificacion
   return `
   <html>
@@ -181,7 +184,7 @@ A preheader is the short summary text that follows the subject line when an emai
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                    <a href="${host}auth/verify/${code}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Verify my account.</a>
+                    <a href="${host}/auth/verify/${code}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Verify my account.</a>
                   </td>
                 </tr>
               </table>
@@ -233,30 +236,27 @@ A preheader is the short summary text that follows the subject line when an emai
 }
 
 //funcion que junta todos los pasos necesarios para exportar
-const accountVerificationEmail = async (
-  newUserMail,
-  codeWithCrypto,
-  userName
-) => {
-  const client = createClient();
-  client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH });
-  const transport = getTransport(client);
+const accountVerificationEmail = async (mailNewUser,codeCrypto) => {
+  const client = createClient()
+  client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH })
+  const transport = getTransport(client)
   const mailOptions = {
-    from: GOOGLE_USER,
-    to: newUserMail,
-    subject: "Verify your new account in My Tinerary",
-    html: getEmailBody({
-      name: userName,
-      code: codeWithCrypto,
-      host: BACK_URL,
-    }),
-  };
-  await transport.sendMail(mailOptions, (error, response) => {
-    if (error) {
-      console.log(error);
-      return;
-    }
-    console.log("Email sent!");
-  });
-};
-module.exports = accountVerificationEmail;
+      from: GOOGLE_USER, 
+      to: mailNewUser, 
+      subject: 'Verify your new account in MyTinerary', 
+      html: getEmailBody({ email:mailNewUser,code:codeCrypto,host:BACK_URL }) 
+  }
+
+  await transport.sendMail(
+      mailOptions, 
+      (error, response) => { 
+          if (error) {
+              console.error(error)
+              return
+          }
+          console.log('Email sent!')
+      }
+  )
+}
+
+module.exports = accountVerificationEmail
