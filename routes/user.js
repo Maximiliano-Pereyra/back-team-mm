@@ -21,7 +21,7 @@ const schema = require("../schemas/user");
 //concatenando las palabaras por las que pasa el enrutador obtengo la ruta total para controlar este metodo
 //router.route("/create").post(create);
 router.post("/sign-up", validator(schema), accountExistsSignUp, register);
-router.get("/verified/:code", verified);
+router.get("/verify/:code", verified);
 router.post('/sign-in', accountExistsSignIn,accountHasBeenVerified , enter)
 router.post('/token', passport.authenticate('jwt', { session:false }), mustSignIn, enterWithToken)
 router.post('/sign-out', passport.authenticate('jwt', { session:false }), leave)
