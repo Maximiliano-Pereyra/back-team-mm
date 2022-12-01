@@ -12,10 +12,10 @@ let {
   readOne,
 } = require("../controllers/itinerary");
 
-router.post("/", validator(schema), create);
-router.get("/", read);
-router.put("/:id", update);
-router.delete("/destroy/:id", destroy);
-router.get("/:id", readOne);
-
+router.get("/",read)
+router.post("/", passport.authenticate("jwt", { session: false }), validator(schema), create);
+router.put("/:id", passport.authenticate("jwt", { session: false }), sameUser(Itinerary), update);
+router.delete("/:id", passport.authenticate("jwt", { session: false }), sameUser(Itinerary), destroy);
+router.get("/:id",readOne)
 module.exports = router;
+

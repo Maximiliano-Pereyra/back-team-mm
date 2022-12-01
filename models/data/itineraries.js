@@ -10,7 +10,7 @@ let itineraries = [
     description: "Tour to Pyramids & The Egyptian Museum",
     price: "100",
     duration: "8",
-    userId: "636d8bcade38ce0e1619410e",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9982",
@@ -23,7 +23,7 @@ let itineraries = [
     description: "Half day visit to the Churches of Old Cairo",
     price: "70",
     duration: "5",
-    userId: "636d8bcade38ce0e1619410e",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9983",
@@ -36,7 +36,7 @@ let itineraries = [
     description: "Athens City Tour, Acropolis & Acropolis Museum Tour",
     price: "67",
     duration: "5",
-    userId: "636d8bcade38ce0e1619410f",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9983",
@@ -49,7 +49,7 @@ let itineraries = [
     description: "Cruise to Hydra, Poros and Aegina",
     price: "110",
     duration: "12",
-    userId: "636d8bcade38ce0e1619410f",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9984",
@@ -63,7 +63,7 @@ let itineraries = [
       "Eiffel Tower Tour With Small Group, With Summit Access by Elevator ",
     price: "45",
     duration: "2",
-    userId: "636d8bcade38ce0e1619410c",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9984",
@@ -76,7 +76,7 @@ let itineraries = [
     description: "Louvre Museum with priority access",
     price: "75",
     duration: "2",
-    userId: "636d8bcade38ce0e1619410c",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9987",
@@ -90,7 +90,7 @@ let itineraries = [
       "Catamaran cruise through the Beagle Channel and Isla de Lobos",
     price: "55",
     duration: "4",
-    userId: "636d8bcade38ce0e1619410f",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9987",
@@ -103,7 +103,7 @@ let itineraries = [
     description: "Vinciguerr Glacier Trekking",
     price: "90",
     duration: "7",
-    userId: "636d8bcade38ce0e1619410f",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9989",
@@ -116,7 +116,7 @@ let itineraries = [
     description: "City Walking Tour, Boat Cruise, and Typical Czech Lunch",
     price: "58",
     duration: "6",
-    userId: "636d8bcade38ce0e1619410d",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c9989",
@@ -129,7 +129,7 @@ let itineraries = [
     description: "Excursion to the Terezín Concentration Camp",
     price: "50",
     duration: "6",
-    userId: "636d8bcade38ce0e1619410d",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c998a",
@@ -143,7 +143,7 @@ let itineraries = [
       "Take a walk along the cobblestone streets, admiring the stunning architecture as you bounce between museums, cafes, and galleries",
     price: "30",
     duration: "4",
-    userId: "636d8bcade38ce0e1619410e",
+    userId: "6383e7a68960c851128860f3",
   },
   {
     cityId: "637304deeff8e7b47b3c998a",
@@ -156,7 +156,7 @@ let itineraries = [
     description: "Day of the Dead Tour",
     price: "15",
     duration: "4",
-    userId: "636d8bcade38ce0e1619410e",
+    userId: "6383e7a68960c851128860f3",
   },
 ];
 
