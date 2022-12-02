@@ -6,11 +6,13 @@ let user = require("./user"); //ubicacion rutas user
 
 let city = require("./city");
 let itinerary = require("./itinerary");
+let reaction = require("./reaction");
 
 //obligo al enrutador principal que use la palabra user para controlar las rutas de user
 router.use("/api/auth", user);
 router.use("/api/city", city);
-router.use("/api/itinerary", itinerary);
+router.use("/api/itineraries", itinerary);
+router.use("api/reactions", reaction);
 
 let hotel = require("./hotel");
 

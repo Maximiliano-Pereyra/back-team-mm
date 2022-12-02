@@ -1,63 +1,68 @@
-function userExistsResponse(req, res) {
+function userExistsResponse(req,res) {
   return res.status(400).json({
-    success: false,
-    message: "User already exists",
-  });
+      success: false,
+      message: 'User already exists'
+  })
 }
 
-function userSignedUpResponse(req, res) {
+function userSignedUpResponse(req,res) {
   return res.status(201).json({
-    success: true,
-    message: "User signed up successfully",
-  });
+      success: true,
+      message: 'User signed up successfully'
+  })
 }
 
-function userSignedOutResponse(req, res) {
+function userSignedOutResponse(req,res) {
   return res.status(201).json({
-    success: true,
-    message: "The session was closed",
-  });
+      success: true,
+      message: 'The session was closed'
+  })
 }
 
-function userNotFoundResponse(req, res) {
+function userNotFoundResponse(req,res) {
   return res.status(404).json({
-    success: false,
-    message: "User not found",
-  });
+      success: false,
+      message: 'User not found'
+  })
 }
 
-function mustSignInResponse(req, res) {
+function mustSignInResponse(req,res) {
   return res.status(400).json({
-    success: false,
-    message: "Sign in please!",
-  });
+      success: false,
+      message: 'Sign in please!'
+  })
 }
 
-function invalidCredentialsResponse(req, res) {
+function invalidCredentialsResponse(req,res) {
   return res.status(401).json({
-    success: false,
-    message: "Email or password incorrect",
-  });
+      success: false,
+      message: 'Email or password incorrect'
+  })
 }
 
-function verifyResponse(req, res) {
+function verifyResponse(req,res) {
   return res.status(401).json({
-    success: false,
-    message: "Verify your email account and try again!",
-  });
+      success: false,
+      message: 'Please, verify your email account and try again!'
+  })
 }
+
 function mustBeTheOwner(req, res) {
   return res.status(401).json({
     success: false,
-    message: "You must be the owner",
+    message: "You must be the owner to carry out this operation",
   });
 }
+
 function activityNotFound(req, res) {
   return res.status(404).json({
     success: false,
-    message: "Couldn't find the document",
+    message: "Couldn't find the activity",
   });
 }
+
+
+
 module.exports = {
   userSignedUpResponse,
   userExistsResponse,
@@ -67,5 +72,6 @@ module.exports = {
   invalidCredentialsResponse,
   verifyResponse,
   mustBeTheOwner,
-  activityNotFound,
-};
+  activityNotFound
+
+}

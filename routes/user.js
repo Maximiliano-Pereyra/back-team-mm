@@ -13,7 +13,8 @@ let {
   enter,
   enterWithToken,
   leave,
-  update
+  update,
+  read
 } = require("../controllers/user");
 const schema = require("../schemas/user");
 
@@ -26,5 +27,6 @@ router.post('/sign-in', accountExistsSignIn,accountHasBeenVerified , enter)
 router.post('/token', passport.authenticate('jwt', { session:false }), mustSignIn, enterWithToken)
 router.post('/sign-out', passport.authenticate('jwt', { session:false }), leave)
 router.patch('/:id',validator(schema), update)
+router.get('/:id', read)
 
 module.exports = router;
