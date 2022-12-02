@@ -46,9 +46,23 @@ const controller = {
         let query = {}
 
         if (req.query.userId) {
-            query = { userId: req.query.userId };
+            query = {
+                ...query,
+                userId:req.query.userId
+            }
           }
-
+          if (req.query.hotelId) {
+            query = {
+                ...query,
+                hotelId:req.query.hotelId
+            }
+          }
+          if (req.query._id) {
+            query = {
+                ...query,
+                _id:req.query._id
+            }
+          }
 
         try {
             let todosS = await Show.find(query)

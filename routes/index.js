@@ -20,4 +20,8 @@ let show = require("./show");
 
 router.use("/api/show", show);
 
+let comment = require("./comment");
+
+router.use("/api/comments", comment)
+
 module.exports = router;
