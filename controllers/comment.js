@@ -69,6 +69,12 @@ const commentController = {
                 userId: req.query.userId
             }
         }
+        if (req.query._id) {
+            query = {
+                ...query,
+                _id: req.query._id
+            }
+        }
 
         try {
             let comments = await Comment.find(query)
@@ -93,66 +99,50 @@ const commentController = {
         }
     },
 
-    modifyComment: async (req, res) => {
-        const { id } = req.params
-        let { comment: commentText } = req.body
-        const { userId, role } = req.user
-        let comment
+    modifyComment:async (req, res) => {
+        let { id } = req.params
         try {
-            comment = await Comment.findOne({ _id: id })
-            if (comment) {
-                if (comment.user.toString() === userId.toString() || role === "admin") {
-                    comment.comment = commentText
-                    comment.date = new Date()
-                    await comment.save()
-                    res.status("200").json({
-                        message: "You editted your comment.",
-                        response: comment,
-                        success: true,
-                    })
-                } else {
-                    res.status("401").json({
-                        message: "Unahutorized",
-                        success: false,
-                    })
-                }
+            let commentU = await Comment.findOneAndUpdate({ _id: id }, req.body, { new: true })
+            if (commentU) {
+                res.status(200).json({
+                    id: commentU._id,
+                    success: true,
+                    message: "se modifico el comentario de manera exitosa"
+                })
             } else {
-                res.status("404").json({
-                    message: "Could not find the comment.",
+                res.status(400).json({
                     success: false,
+                    message: "no se encontro el comentario"
                 })
             }
+
         } catch (error) {
-            console.log(error)
-            res.status("400").json({
-                message: "Your comment was not found.",
+            res.status(404).json({
                 success: false,
+                message: error.message
             })
         }
     },
-    removeComment: async (req, res) => {
-        const { id } = req.params
-        const { userId, role } = req.user
-        let comment
+    removeComment:  async (req, res) => {
+        let { id } = req.params
         try {
-            comment = await Comment.findOne({ _id: id })
-            if (comment.user.toString() === userId.toString() || role === "admin") {
-                await Comment.findOneAndRemove({ _id: id })
-                res.status("200").json({
-                    message: "You deleted this comment.",
+            let commentD = await Comment.findOneAndDelete({ _id: id })
+            if (commentD) {
+                res.status(200).json({
+                    id: commentD._id,
                     success: true,
+                    message: "se elimino el comment de manera exitosa"
                 })
             } else {
-                res.status("401").json({
-                    message: "Unahutorized",
-                    success: true,
+                res.status(404).json({
+                    success: false,
+                    message: "no se encontro el comment"
                 })
             }
         } catch (error) {
-            console.log(error)
-            res.status("400").json({
-                message: "Error",
+            res.status(404).json({
                 success: false,
+                message: error.message
             })
         }
     }
