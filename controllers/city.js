@@ -1,14 +1,13 @@
-const City = require("../models/City");
+const City = require("../models/City.js");
 
 const controller = {
   create: async (req, res) => {
     try {
       let new_city = await City.create(req.body);
       res.status(201).json({
-        id: new_city._id,
+        response: new_city,
         success: true,
-        message: "The city has been created successfully",
-        body: new_city,
+        message: "the city was successfully created",
       });
     } catch (error) {
       res.status(400).json({
@@ -17,39 +16,34 @@ const controller = {
       });
     }
   },
-
   read: async (req, res) => {
     let query = {};
     if (req.query.userId) {
       query = { userId: req.query.userId };
     }
     if (req.query.continent) {
-      query = {
-        ...query,
-        continent: req.query.continent,
-      };
+      query = { continent: req.query.continent };
     }
     if (req.query.name) {
       query = {
         ...query,
         name: { $regex: req.query.name, $options: "i" },
       };
+      
     }
+    
     try {
-      let allcities = await City.find(query).populate({
-        path: "userId", //la propiedad
-        select: "role -_id", //lo que quiero dentro
-      });
-      if (allcities) {
+      let all_cities = await City.find(query)
+      if (all_cities) {
         res.status(200).json({
           success: true,
-          message: "Cities were successfully found",
-          response: allcities,
+          message: "the cities were successfully found",
+          response: all_cities,
         });
       } else {
         res.status(404).json({
           success: false,
-          message: "No city was found",
+          message: "there are no cities",
         });
       }
     } catch (error) {
@@ -62,82 +56,77 @@ const controller = {
   readOne: async (req, res) => {
     let id = req.params.id;
     try {
-      let findcity = await City.findOne({ _id: id }).populate({
+      let city = await City.findOne({ _id: id }).populate({
         path: "userId",
         select: "name photo -_id",
       });
-      if (findcity) {
+      if (city) {
         res.status(200).json({
-          message: "City found",
-          response: findcity,
           success: true,
+          message: "the city was successfully found",
+          response: city,
         });
       } else {
         res.status(404).json({
-          message: "Could not find the city",
           success: false,
+          message: "there is no city",
         });
       }
     } catch (error) {
-      console.log(error);
       res.status(400).json({
-        message: error.message,
         success: false,
+        message: error.message,
       });
     }
   },
-
   update: async (req, res) => {
-    let { id } = req.params; //saco propiedad id del objeto params
+    let { id } = req.params;
     try {
-      let onecity = await City.findByIdAndUpdate({ _id: id }, req.body, {
+      let city = await City.findOneAndUpdate({ _id: id }, req.body, {
         new: true,
       });
-      if (onecity) {
+      if (city) {
         res.status(200).json({
-          id: onecity._id,
-          message: "The city has been modified",
+          id: city._id,
           success: true,
+          message: "The city was successfully modified",
         });
       } else {
         res.status(404).json({
-          message: "The city has not been found",
           success: false,
+          message: "The city was not found",
         });
       }
     } catch (error) {
-      console.log(error);
       res.status(400).json({
-        message: error.message,
         success: false,
+        message: error.message,
       });
     }
   },
-
   destroy: async (req, res) => {
     let { id } = req.params;
     try {
-      let onecity = await City.findByIdAndDelete({ _id: id });
-      if (onecity) {
+      let city = await City.findOneAndDelete({ _id: id });
+      if (city) {
         res.status(200).json({
-          id: onecity._id,
-          message: "The city has been deleted",
+          res: city,
           success: true,
+          message: "The city was successfully deleted",
         });
       } else {
         res.status(404).json({
-          message: "The city has not been found",
           success: false,
+          message: "The city was not found",
         });
       }
     } catch (error) {
-      console.log(error);
       res.status(400).json({
-        message: error.message,
         success: false,
+        message: error.message,
       });
     }
   },
+ 
 };
-
 module.exports = controller;

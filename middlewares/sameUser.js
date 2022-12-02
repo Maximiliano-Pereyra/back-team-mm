@@ -1,6 +1,6 @@
-const { mustBeTheOwner, activityNotFound } = require("../config/responses");
+const { mustBeTheOwner, activityNotFound} = require("../config/responses");
 
-const sameUser = (model) => [
+const sameUser = model => [
   async (req, res, next) => {
     let activity = await model.findOne({ _id: req.params.id });
     if (activity) {
@@ -12,5 +12,6 @@ const sameUser = (model) => [
     return activityNotFound(req, res);
   },
 ];
+
 
 module.exports = sameUser;
